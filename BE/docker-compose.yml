@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:12-alpine
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_USER: postgres
+      POSTGRES_DB: bookstore
+    volumes:
+      - ./postgresql_data:/var/lib/postgresql/data
+
+volumes:
+  postgresql_data:

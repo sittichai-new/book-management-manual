@@ -1,0 +1,15 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Books { 
+  book_id    Int     @id @default(autoincrement()) 
+  name String  @unique
+  description  String?
+  is_deleted Boolean @default(false)
+} 
