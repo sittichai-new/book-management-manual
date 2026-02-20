@@ -12,23 +12,25 @@ export class BooksService {
   async create(createBookDto: CreateBookDto): Promise<BooksModel | null>{
     const findBook = await this.prisma.books.findFirst({
       where: {
-        book_name: createBookDto.name,
+        isbn: createBookDto.isbn,
         is_deleted: false,
       },
     });
 
     if (findBook) {
-      throw new BadRequestException('Book with the same name already exists');
+      throw new BadRequestException('Book with the same ISBN already exists');
     }
 
     const book = await this.prisma.books.create({
     data: {
+      isbn: createBookDto.isbn ?? '',
       book_name: createBookDto.name ?? '',
       description: createBookDto.description ?? '',
     },
     });
 
     return {
+      isbn: book.isbn,
       book_name: book.book_name,
       description: book.description,
       is_deleted: book.is_deleted,
@@ -43,8 +45,9 @@ export class BooksService {
       },
     });
     return allBooks.map((book) => ({
-      book_name: book.book_name,
+      isbn: book.isbn,
       book_id: book.book_id,
+      book_name: book.book_name,
     }));
   }
 
@@ -60,6 +63,7 @@ export class BooksService {
       throw new NotFoundException('Book not found');
     }
     return {
+      isbn: findBook.isbn,
       book_name: findBook.book_name,
       description: findBook.description,
       book_id: findBook.book_id,

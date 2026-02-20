@@ -9,6 +9,7 @@ datasource db {
 
 model Books {
   book_id     Int     @id @default(autoincrement())
+  isbn        String
   book_name   String
   description String
   is_deleted  Boolean @default(false)

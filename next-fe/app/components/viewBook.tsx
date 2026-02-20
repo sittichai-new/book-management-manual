@@ -1,0 +1,32 @@
+import { useEffect, useState } from "react";
+import { BooksList } from "../types/book";
+import BookField from "./bookField";
+
+export default function ViewBook({ open, id ,onClose, form, setForm }: any) {
+    if (!open) return null;
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await fetch("http://localhost:4000/books/getBook/" + id);
+            const data = await res.json();
+            setForm(data);
+        }
+        fetchData();
+    }, [id]);
+
+    return (
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
+            <div className="bg-white w-[420px] rounded shadow p-6">
+            <h2 className="text-xl font-semibold mb-4">View Book</h2>
+
+            <BookField form={form} setForm={setForm} hideIsbn={false} />
+
+            <div className="flex justify-end gap-2 mt-5">
+                <button onClick={onClose} className="px-3 py-2 border rounded">
+                Cancel
+                </button>
+            </div>
+            </div>
+        </div>
+    );
+}
