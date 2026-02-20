@@ -7,9 +7,9 @@ datasource db {
   provider = "postgresql"
 }
 
-model Books { 
-  book_id    Int     @id @default(autoincrement()) 
-  name String 
-  description  String?
-  is_deleted Boolean @default(false)
-} 
+model Books {
+  book_id     Int     @id @default(autoincrement())
+  book_name   String
+  description String
+  is_deleted  Boolean @default(false)
+}

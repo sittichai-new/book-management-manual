@@ -36,21 +36,21 @@ export type BooksSumAggregateOutputType = {
 
 export type BooksMinAggregateOutputType = {
   book_id: number | null
-  name: string | null
+  book_name: string | null
   description: string | null
   is_deleted: boolean | null
 }
 
 export type BooksMaxAggregateOutputType = {
   book_id: number | null
-  name: string | null
+  book_name: string | null
   description: string | null
   is_deleted: boolean | null
 }
 
 export type BooksCountAggregateOutputType = {
   book_id: number
-  name: number
+  book_name: number
   description: number
   is_deleted: number
   _all: number
@@ -67,21 +67,21 @@ export type BooksSumAggregateInputType = {
 
 export type BooksMinAggregateInputType = {
   book_id?: true
-  name?: true
+  book_name?: true
   description?: true
   is_deleted?: true
 }
 
 export type BooksMaxAggregateInputType = {
   book_id?: true
-  name?: true
+  book_name?: true
   description?: true
   is_deleted?: true
 }
 
 export type BooksCountAggregateInputType = {
   book_id?: true
-  name?: true
+  book_name?: true
   description?: true
   is_deleted?: true
   _all?: true
@@ -175,8 +175,8 @@ export type BooksGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 
 export type BooksGroupByOutputType = {
   book_id: number
-  name: string
-  description: string
+  book_name: string
+  description: string | null
   is_deleted: boolean
   _count: BooksCountAggregateOutputType | null
   _avg: BooksAvgAggregateOutputType | null
@@ -205,32 +205,32 @@ export type BooksWhereInput = {
   OR?: Prisma.BooksWhereInput[]
   NOT?: Prisma.BooksWhereInput | Prisma.BooksWhereInput[]
   book_id?: Prisma.IntFilter<"Books"> | number
-  name?: Prisma.StringFilter<"Books"> | string
-  description?: Prisma.StringFilter<"Books"> | string
+  book_name?: Prisma.StringFilter<"Books"> | string
+  description?: Prisma.StringNullableFilter<"Books"> | string | null
   is_deleted?: Prisma.BoolFilter<"Books"> | boolean
 }
 
 export type BooksOrderByWithRelationInput = {
   book_id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
-  description?: Prisma.SortOrder
+  book_name?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
   is_deleted?: Prisma.SortOrder
 }
 
 export type BooksWhereUniqueInput = Prisma.AtLeast<{
   book_id?: number
-  name?: string
   AND?: Prisma.BooksWhereInput | Prisma.BooksWhereInput[]
   OR?: Prisma.BooksWhereInput[]
   NOT?: Prisma.BooksWhereInput | Prisma.BooksWhereInput[]
-  description?: Prisma.StringFilter<"Books"> | string
+  book_name?: Prisma.StringFilter<"Books"> | string
+  description?: Prisma.StringNullableFilter<"Books"> | string | null
   is_deleted?: Prisma.BoolFilter<"Books"> | boolean
-}, "book_id" | "name">
+}, "book_id">
 
 export type BooksOrderByWithAggregationInput = {
   book_id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
-  description?: Prisma.SortOrder
+  book_name?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
   is_deleted?: Prisma.SortOrder
   _count?: Prisma.BooksCountOrderByAggregateInput
   _avg?: Prisma.BooksAvgOrderByAggregateInput
@@ -244,60 +244,60 @@ export type BooksScalarWhereWithAggregatesInput = {
   OR?: Prisma.BooksScalarWhereWithAggregatesInput[]
   NOT?: Prisma.BooksScalarWhereWithAggregatesInput | Prisma.BooksScalarWhereWithAggregatesInput[]
   book_id?: Prisma.IntWithAggregatesFilter<"Books"> | number
-  name?: Prisma.StringWithAggregatesFilter<"Books"> | string
-  description?: Prisma.StringWithAggregatesFilter<"Books"> | string
+  book_name?: Prisma.StringWithAggregatesFilter<"Books"> | string
+  description?: Prisma.StringNullableWithAggregatesFilter<"Books"> | string | null
   is_deleted?: Prisma.BoolWithAggregatesFilter<"Books"> | boolean
 }
 
 export type BooksCreateInput = {
-  name: string
-  description: string
+  book_name: string
+  description?: string | null
   is_deleted?: boolean
 }
 
 export type BooksUncheckedCreateInput = {
   book_id?: number
-  name: string
-  description: string
+  book_name: string
+  description?: string | null
   is_deleted?: boolean
 }
 
 export type BooksUpdateInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  book_name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type BooksUncheckedUpdateInput = {
   book_id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  book_name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type BooksCreateManyInput = {
   book_id?: number
-  name: string
-  description: string
+  book_name: string
+  description?: string | null
   is_deleted?: boolean
 }
 
 export type BooksUpdateManyMutationInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  book_name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type BooksUncheckedUpdateManyInput = {
   book_id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  book_name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   is_deleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type BooksCountOrderByAggregateInput = {
   book_id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  book_name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   is_deleted?: Prisma.SortOrder
 }
@@ -308,14 +308,14 @@ export type BooksAvgOrderByAggregateInput = {
 
 export type BooksMaxOrderByAggregateInput = {
   book_id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  book_name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   is_deleted?: Prisma.SortOrder
 }
 
 export type BooksMinOrderByAggregateInput = {
   book_id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  book_name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   is_deleted?: Prisma.SortOrder
 }
@@ -326,6 +326,10 @@ export type BooksSumOrderByAggregateInput = {
 
 export type StringFieldUpdateOperationsInput = {
   set?: string
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
 }
 
 export type BoolFieldUpdateOperationsInput = {
@@ -344,41 +348,41 @@ export type IntFieldUpdateOperationsInput = {
 
 export type BooksSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   book_id?: boolean
-  name?: boolean
+  book_name?: boolean
   description?: boolean
   is_deleted?: boolean
 }, ExtArgs["result"]["books"]>
 
 export type BooksSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   book_id?: boolean
-  name?: boolean
+  book_name?: boolean
   description?: boolean
   is_deleted?: boolean
 }, ExtArgs["result"]["books"]>
 
 export type BooksSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   book_id?: boolean
-  name?: boolean
+  book_name?: boolean
   description?: boolean
   is_deleted?: boolean
 }, ExtArgs["result"]["books"]>
 
 export type BooksSelectScalar = {
   book_id?: boolean
-  name?: boolean
+  book_name?: boolean
   description?: boolean
   is_deleted?: boolean
 }
 
-export type BooksOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"book_id" | "name" | "description" | "is_deleted", ExtArgs["result"]["books"]>
+export type BooksOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"book_id" | "book_name" | "description" | "is_deleted", ExtArgs["result"]["books"]>
 
 export type $BooksPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Books"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     book_id: number
-    name: string
-    description: string
+    book_name: string
+    description: string | null
     is_deleted: boolean
   }, ExtArgs["result"]["books"]>
   composites: {}
@@ -804,7 +808,7 @@ export interface Prisma__BooksClient<T, Null = never, ExtArgs extends runtime.Ty
  */
 export interface BooksFieldRefs {
   readonly book_id: Prisma.FieldRef<"Books", 'Int'>
-  readonly name: Prisma.FieldRef<"Books", 'String'>
+  readonly book_name: Prisma.FieldRef<"Books", 'String'>
   readonly description: Prisma.FieldRef<"Books", 'String'>
   readonly is_deleted: Prisma.FieldRef<"Books", 'Boolean'>
 }

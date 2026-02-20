@@ -12,7 +12,7 @@ export class BooksService {
   async create(createBookDto: CreateBookDto): Promise<BooksModel | null>{
     const findBook = await this.prisma.books.findFirst({
       where: {
-        name: createBookDto.name,
+        book_name: createBookDto.name,
         is_deleted: false,
       },
     });
@@ -23,13 +23,13 @@ export class BooksService {
 
     const book = await this.prisma.books.create({
     data: {
-      name: createBookDto.name ?? '',
+      book_name: createBookDto.name ?? '',
       description: createBookDto.description ?? '',
     },
     });
 
     return {
-      name: book.name,
+      book_name: book.book_name,
       description: book.description,
       is_deleted: book.is_deleted,
       book_id: book.book_id,
@@ -43,8 +43,8 @@ export class BooksService {
       },
     });
     return allBooks.map((book) => ({
-      name: book.name,
-      bookId: book.book_id,
+      book_name: book.book_name,
+      book_id: book.book_id,
     }));
   }
 
@@ -60,7 +60,7 @@ export class BooksService {
       throw new NotFoundException('Book not found');
     }
     return {
-      name: findBook.name,
+      book_name: findBook.book_name,
       description: findBook.description,
       book_id: findBook.book_id,
     };
@@ -83,7 +83,7 @@ export class BooksService {
           book_id: id,
         },
         data: {
-          name: updateBookDto.name ?? findBook.name,
+          book_name: updateBookDto.name ?? findBook.book_name,
           description: updateBookDto.description ?? findBook.description,
           is_deleted: updateBookDto.isDeleted ?? findBook.is_deleted,
         },
