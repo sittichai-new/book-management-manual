@@ -80,7 +80,7 @@ export default function Home() {
 
 
  return (
-    <div className="min-h-screen bg-gray-100 p-8 max-w-5xl mx-auto">
+    <div className="p-8 max-w-5xl mx-auto">
       <div className="flex justify-between mb-6">
         <h1 className="text-3xl font-semibold">Book Management</h1>
         <button
